@@ -8,12 +8,6 @@ import (
 	"net/http"
 )
 
-type Customer struct {
-	Name    string `json:"full_name" xml:"name"`
-	City    string `json:"city" xml:"city"`
-	ZipCode string `json:"zip_code" xml:"zip"`
-}
-
 type CustomerHandlers struct {
 	service service.CustomerService
 }
