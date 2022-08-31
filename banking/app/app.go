@@ -18,6 +18,7 @@ func Start() {
 	// ch := CustomerHandlers{service.NewCustomerService(domain.NewCustomerRepositoryStub())}
 	ch := CustomerHandlers{service.NewCustomerService(domain.NewCustomerRepositoryDb())}
 	router.HandleFunc("/customers", ch.getAllCustomers).Methods(http.MethodGet)
+	router.HandleFunc("/customers/{id:[0-9]+}", ch.getCustomer).Methods(http.MethodGet)
 
 	// router.HandleFunc("/customers", createCustomer).Methods(http.MethodPost)
 	// router.HandleFunc("/customers/{id:[0-9]+}", getCustomer).Methods(http.MethodGet)
