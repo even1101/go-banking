@@ -15,7 +15,8 @@ func Start() {
 
 	router.HandleFunc("/ping", ping).Methods(http.MethodGet)
 
-	ch := CustomerHandlers{service.NewCustomerService(domain.NewCustomerRepositoryStub())}
+	// ch := CustomerHandlers{service.NewCustomerService(domain.NewCustomerRepositoryStub())}
+	ch := CustomerHandlers{service.NewCustomerService(domain.NewCustomerRepositoryDb())}
 	router.HandleFunc("/customers", ch.getAllCustomers).Methods(http.MethodGet)
 
 	// router.HandleFunc("/customers", createCustomer).Methods(http.MethodPost)
