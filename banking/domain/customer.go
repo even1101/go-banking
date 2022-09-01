@@ -1,14 +1,37 @@
 package domain
 
-import "banking/errs"
+import (
+	"banking/dto"
+	"banking/errs"
+)
 
 type Customer struct {
-	Id      string `db:"customer_id" json:"id" xml:"id"`
-	Name    string `json:"full_name" xml:"name"`
-	City    string `json:"city" xml:"city"`
-	ZipCode string `json:"zip_code" xml:"zip"`
-	Birth   string `db:"date_of_birth" json:"birth" xml:"birth"`
-	Status  string `json:"status" xml:"status"`
+	Id      string `db:"customer_id"`
+	Name    string
+	City    string
+	ZipCode string
+	Birth   string `db:"date_of_birth"`
+	Status  string
+}
+
+func (c Customer) statusAsText() string {
+	statusAsText := "active"
+	if c.Status == "0" {
+		statusAsText = "inactive"
+	}
+	return statusAsText
+}
+
+func (c Customer) ToDto() dto.CustomerResponse {
+
+	return dto.CustomerResponse{
+		Id:      c.Id,
+		Name:    c.Name,
+		City:    c.City,
+		ZipCode: c.ZipCode,
+		Birth:   c.Birth,
+		Status:  c.statusAsText(),
+	}
 }
 
 type CustomerRepository interface {

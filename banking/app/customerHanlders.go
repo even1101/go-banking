@@ -49,12 +49,3 @@ func writeResponse(w http.ResponseWriter, code int, data interface{}) {
 		panic(err)
 	}
 }
-
-// func createCustomer(w http.ResponseWriter, r *http.Request) {
-
-// }
-
-// func getCustomer(w http.ResponseWriter, r *http.Request) {
-// 	vars := mux.Vars(r)
-// 	fmt.Fprint(w, vars["id"])
-// }
