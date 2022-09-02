@@ -1,0 +1,1 @@
+SERVER_HOST=localhost SERVER_PORT=9527 go run main.go
