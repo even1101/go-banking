@@ -26,6 +26,10 @@ func Start() {
 	router.HandleFunc("/customers", ch.getAllCustomers).Methods(http.MethodGet)
 	router.HandleFunc("/customers/{id:[0-9]+}", ch.getCustomer).Methods(http.MethodGet)
 
+	accountRepositoryDb := domain.NewAccountRepositoryDb(dbClient)
+	ah := AccountHandlers{service.NewAccountService(accountRepositoryDb)}
+	router.HandleFunc("/customers/{id:[0-9]+}/account", ah.newAccount).Methods(http.MethodPost)
+
 	host := os.Getenv("SERVER_HOST")
 	port := os.Getenv("SERVER_PORT")
 	log.Fatal(http.ListenAndServe(fmt.Sprintf("%s:%s", host, port), router))
