@@ -29,6 +29,7 @@ func Start() {
 	accountRepositoryDb := domain.NewAccountRepositoryDb(dbClient)
 	ah := AccountHandlers{service.NewAccountService(accountRepositoryDb)}
 	router.HandleFunc("/customers/{id:[0-9]+}/account", ah.newAccount).Methods(http.MethodPost)
+	router.HandleFunc("/customers/{id:[0-9]+}/account/{account_id:[0-9]+}", ah.makeTransaction).Methods(http.MethodPost)
 
 	host := os.Getenv("SERVER_HOST")
 	port := os.Getenv("SERVER_PORT")
