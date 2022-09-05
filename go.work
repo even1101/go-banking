@@ -1,0 +1,7 @@
+// https://github.com/golang/tools/blob/master/gopls/doc/workspace.md
+go 1.19
+
+use (
+	./banking-auth
+	./banking-lib
+)
