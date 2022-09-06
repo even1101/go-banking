@@ -1,8 +1,8 @@
 package main
 
 import (
+	"banking-lib/logger"
 	"banking/app"
-	"banking/logger"
 )
 
 func main() {

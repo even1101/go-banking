@@ -1,9 +1,9 @@
 package service
 
 import (
+	"banking-lib/errs"
 	"banking/domain"
 	"banking/dto"
-	"banking/errs"
 )
 
 type CustomerService interface {

@@ -1,8 +1,8 @@
 package domain
 
 import (
+	"banking-lib/errs"
 	"banking/dto"
-	"banking/errs"
 )
 
 type Account struct {
